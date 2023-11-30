@@ -23,16 +23,19 @@ body {
 
 .sr-only {
   border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  /* 1 */
   -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important; /* 2 */
+  clip-path: inset(50%) !important;
+  /* 2 */
   height: 1px !important;
   margin: -1px !important;
   overflow: hidden !important;
   padding: 0 !important;
   position: absolute !important;
   width: 1px !important;
-  white-space: nowrap !important; /* 3 */
+  white-space: nowrap !important;
+  /* 3 */
 }
 
 .main-nav {
@@ -153,6 +156,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* Rengement ici fait prendre la suite */
 .sign-in-button {
   display: block;
   width: 100%;
@@ -202,6 +206,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* Ici c'est fait aussi */
 .footer {
   display: flex;
   justify-content: center;
@@ -214,6 +219,7 @@ body {
   padding: 0;
 }
 
+/* Jusqu'ici */
 .account {
   display: flex;
   justify-content: space-between;
