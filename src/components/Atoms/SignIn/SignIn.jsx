@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./SignIn.css";
 
 const SignIn = () => {
     return (
         <div>
-            <a className="main-nav-item" href="#">
+            <Link to="/signin" className="main-nav-item">
                 <i className="fa fa-user-circle"></i>
                 Sign In
-            </a>
+            </Link>
         </div>
     );
 };
