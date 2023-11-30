@@ -156,7 +156,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Rengement ici fait prendre la suite */
 .sign-in-button {
   display: block;
   width: 100%;
@@ -206,7 +205,6 @@ body {
   font-size: 1.2rem;
 }
 
-/* Ici c'est fait aussi */
 .footer {
   display: flex;
   justify-content: center;
@@ -219,7 +217,7 @@ body {
   padding: 0;
 }
 
-/* Jusqu'ici */
+/* Rengement ici fait prendre la suite */
 .account {
   display: flex;
   justify-content: space-between;
