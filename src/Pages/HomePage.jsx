@@ -12,6 +12,7 @@ const HomePage = () => {
             <Routes>
                 <Route exact path="/" element={<Main />} />
                 <Route path="/signin" element={<Main signIn={true} />} />
+                <Route path="/profile" element={<Main isAuthenticated={true} />} />
             </Routes>
             <Footer />
         </ErrorBoundary>
