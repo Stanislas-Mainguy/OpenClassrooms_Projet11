@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ErrorBoundary from "./HomePageErrorBoundaries";
-import Header from "../../components/Organisms/Header/Header";
-import Main from "../../components/Organisms/Main/Main";
-import Footer from "../../components/Organisms/Footer/Footer";
+import Header from "../components/Organisms/Header/Header";
+import Main from "../components/Organisms/Main/Main";
+import Footer from "../components/Organisms/Footer/Footer";
 
 const HomePage = () => {
     return (
