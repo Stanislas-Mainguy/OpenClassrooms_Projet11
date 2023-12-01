@@ -1,6 +1,6 @@
 import React from "react";
 import SectionFeaturesData from "./SectionFeaturesData.json";
-import SectionFeaturesItems from "../../Atoms/SectionFeaturesItems/SectionFeaturesItems";
+import SectionFeaturesItems from "../../Atoms/FeaturesItems/FeaturesItems";
 import "./SectionFeatures.css";
 
 const SectionFeatures = () => {
