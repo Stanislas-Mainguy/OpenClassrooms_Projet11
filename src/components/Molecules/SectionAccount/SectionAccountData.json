@@ -1,0 +1,21 @@
+[
+    {
+      "id": "x8349",
+      "accountType": "Checking",
+      "balance": "$2,082.79",
+      "description": "Available Balance"
+    },
+    {
+      "id": "x6712",
+      "accountType": "Savings",
+      "balance": "$10,928.42",
+      "description": "Available Balance"
+    },
+    {
+      "id": "x8349",
+      "accountType": "Credit Card",
+      "balance": "$184.30",
+      "description": "Current Balance"
+    }
+  ]
+  
