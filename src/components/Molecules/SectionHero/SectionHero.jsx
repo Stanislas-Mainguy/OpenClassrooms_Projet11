@@ -1,5 +1,5 @@
 import React from "react";
-import SectionHeroContent from "../../Atoms/SectionHeroContent/SectionHeroContent";
+import SectionHeroContent from "../../Atoms/HeroContent/HeroContent";
 import "./SectionHero.css";
 
 const SectionHero = () => {
