@@ -1,20 +1,24 @@
 .sign-in-button {
     display: block;
-    width: 100%;
+    width: 107%;
     padding: 8px;
     font-size: 1.1rem;
     font-weight: bold;
     margin-top: 1rem;
-    border-color: #00bc77;
+    border: none;
     background-color: #00bc77;
     color: #fff;
+    text-decoration: underline;
 }
 
 .input-remember {
     display: flex;
+    justify-content: left;
+    flex-direction: row-reverse;
 }
 
 .input-remember label {
+    display: flex;
     margin-left: 0.25rem;
 }
 
