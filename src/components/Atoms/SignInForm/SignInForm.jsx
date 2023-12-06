@@ -1,34 +1,38 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../../store/slices/authSlice";
 import "./SignInForm.css";
 
 const SignInForm = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (username === 'Stan' && password === 'Stanislas') {
-            dispatch({ type: 'SIGN_IN'});
-            navigate("/profile");
-        } else {
-            alert("Invalid username or password");
-        }
+        dispatch(loginUser({ email, password }))
+            .then(() => {
+                navigate("/profile");
+                console.log('Login was OK')
+            })
+            .catch((error) => {
+                alert("Invalid username or password");
+                console.error('Error during login:', error);
+            });
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="email">Email</label>
                 <input 
-                    type="text" 
-                    id="username" 
+                    type="email" 
+                    id="email" 
                     autoComplete="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)} 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)} 
                 />
             </div>
             <div className="input-wrapper">
