@@ -34,3 +34,5 @@ node_modules
 config/runtime.yaml
 
 .DS_Store
+src/Structure perso d'aide/Structure.json
+src/Structure perso d'aide/Structure.txt
