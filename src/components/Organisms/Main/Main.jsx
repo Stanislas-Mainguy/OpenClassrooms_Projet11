@@ -11,7 +11,7 @@ const Main = () => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const location = useLocation();
 
-    const onSignInPage = location.pathname === '/signin';
+    const onSignInPage = location.pathname === '/login';
 
     if (isAuthenticated) {
         return (
