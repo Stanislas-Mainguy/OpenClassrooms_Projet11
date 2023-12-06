@@ -1,15 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "../../../store/slices/authSlice";
 import "./SignIn.css";
 
-const SignIn = () => {
-    const isAuthenticated = useSelector(state => state.isAuthenticated);
+const Login = () => {
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleSignOut = () => {
-        dispatch({ type: 'SIGN_OUT' });
+        dispatch(signOut());
         navigate("/");
     };
 
@@ -29,7 +30,7 @@ const SignIn = () => {
     } else {
         return (
             <div>
-                <Link to="/signin" className="main-nav-item">
+                <Link to="/login" className="main-nav-item">
                     <i className="fa fa-user-circle"></i>
                     Sign In
                 </Link>
@@ -38,4 +39,4 @@ const SignIn = () => {
     }
 };
 
-export default SignIn;
+export default Login;
