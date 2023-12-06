@@ -8,7 +8,7 @@ import SectionAccount from "../../Molecules/SectionAccount/SectionAccount";
 import "./Main.css";
 
 const Main = () => {
-    const isAuthenticated = useSelector(state => state.isAuthenticated);
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const location = useLocation();
 
     const onSignInPage = location.pathname === '/signin';
