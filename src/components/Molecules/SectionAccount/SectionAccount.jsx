@@ -1,16 +1,28 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserProfile } from "../../../store/slices/authSlice";
 import SectionAccountData from "./SectionAccountData.json";
 import AccountItems from "../../Atoms/AccountItems/AccountItems";
 import "./SectionAccount.css";
 
 const SectionAccount = () => {
-    const { firstname, lastname } = useSelector(state.user);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
+
+    useEffect(() => {
+        if (token) {
+            dispatch(fetchUserProfile());
+        }  
+    }, [dispatch, token]);
+
+    console.log("User data", user);
+    const { firstName, userName } = user || {};
     
     return (
         <>
             <div className="header">
-                <h1>Welcome back<br />{firstname} {lastname}!</h1>
+                <h1>Welcome back<br />{firstName} {userName}!</h1>
                 <button className="edit-button">Edit Name</button>
             </div>
             <h2 className="sr-only">Accounts</h2>
