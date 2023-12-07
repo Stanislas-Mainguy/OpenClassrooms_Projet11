@@ -34,9 +34,13 @@ export const authSlice = createSlice({
     builder
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
-        state.token = action.payload.token;
-        state.user = action.payload.user;
-        localStorage.setItem('token', action.payload.token);
+        state.token = action.payload.body.token;
+        state.user = {
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+          userName: action.payload.userName
+        };
+        localStorage.setItem('token', action.payload.body.token);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.error = action.payload;
