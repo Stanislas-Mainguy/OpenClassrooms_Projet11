@@ -30,16 +30,17 @@ export const authSlice = createSlice({
       state.user = null;
     },
   },
-  extraReducers: {
-    [loginUser.fulfilled]: (state, action) => {
-      state.isAuthenticated = true;
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-      localStorage.setItem('token', action.payload.token);
-    },
-    [loginUser.rejected]: (state, action) => {
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.isAuthenticated = true;
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+        localStorage.setItem('token', action.payload.token);
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   }
 });
 
