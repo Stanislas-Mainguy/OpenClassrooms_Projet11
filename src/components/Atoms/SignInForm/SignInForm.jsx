@@ -9,17 +9,35 @@ const SignInForm = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setErrorMessage('');
+        
+        if (!email && !password) {
+            setErrorMessage("Please fill in both email and password to login.");
+            return;
+        } else if (!email) {
+            setErrorMessage("Please enter your email.");
+            return;
+        } else if (!password) {
+            setErrorMessage("Please enter your password.");
+            return;
+        }
+    
         dispatch(loginUser({ email, password }))
-            .then(() => {
-                navigate("/profile");
-                console.log('Login was OK')
+            .then((response) => {
+                if (response.payload && response.payload.token) {
+                    navigate("/profile");
+                    console.log('The connection was successful');
+                } else {
+                    setErrorMessage("Invalid username or password");
+                }
             })
             .catch((error) => {
-                alert("Invalid username or password");
                 console.error('Error during login:', error);
+                setErrorMessage("Invalid username or password");
             });
     };
 
@@ -50,6 +68,7 @@ const SignInForm = () => {
                 <input type="checkbox" id="remember-me" />
             </div>
             <button type="submit" className="sign-in-button">Sign In</button>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
         </form>
     );
 };
