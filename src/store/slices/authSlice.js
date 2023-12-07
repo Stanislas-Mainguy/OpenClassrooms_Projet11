@@ -16,6 +16,24 @@ export const loginUser = createAsyncThunk(
     }
 );
 
+export const fetchUserProfile = createAsyncThunk(
+  'auth/fetchUserProfile',
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.token;
+      const response = await axios.get('http://localhost:3001/api/v1/user/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      return response.data.body;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -35,14 +53,15 @@ export const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
         state.token = action.payload.body.token;
-        state.user = {
-          firstName: action.payload.firstName,
-          lastName: action.payload.lastName,
-          userName: action.payload.userName
-        };
         localStorage.setItem('token', action.payload.body.token);
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(fetchUserProfile.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(fetchUserProfile.rejected, (state, action) => {
         state.error = action.payload;
       });
   }
