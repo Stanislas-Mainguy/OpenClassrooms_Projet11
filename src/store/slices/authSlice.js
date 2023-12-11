@@ -40,12 +40,16 @@ export const authSlice = createSlice({
     isAuthenticated: false,
     token: null,
     user: null,
+    isEditing: false,
   },
   reducers: {
     signOut: (state) => {
       state.isAuthenticated = false;
       state.token = null;
       state.user = null;
+    },
+    toggleEdit: (state) => {
+      state.isEditing = !state.isEditing;
     },
   },
   extraReducers: (builder) => {
@@ -67,5 +71,5 @@ export const authSlice = createSlice({
   }
 });
 
-export const { signOut } = authSlice.actions;
+export const { signOut, toggleEdit } = authSlice.actions;
 export default authSlice.reducer;
