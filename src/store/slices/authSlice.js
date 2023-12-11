@@ -21,7 +21,7 @@ export const fetchUserProfile = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.token;
-      const response = await axios.get('http://localhost:3001/api/v1/user/profile', {
+      const response = await axios.post('http://localhost:3001/api/v1/user/profile', {
         headers: {
           Authorization: `Bearer ${token}`
         }
