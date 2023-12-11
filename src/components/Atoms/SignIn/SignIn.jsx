@@ -16,12 +16,12 @@ const Login = () => {
 
     if (isAuthenticated) {
         return (
-            <div>
+            <div className="block-logout">
                 <Link to="/profile" className="main-nav-item">
                     <i className="fa fa-user-circle"></i>
-                    Tony
+                    Tony {/* Il faudra mettre le firstName à la place de Tony */}
                 </Link>
-                <button onClick={handleSignOut} className="main-nav-item">
+                <button onClick={handleSignOut} className="sign-out">
                     <i className="fa fa-sign-out"></i>
                     Sign Out
                 </button>
