@@ -38,7 +38,7 @@ const EditUserName = () => {
                     <input 
                         type="text"
                         id="first-name"
-                        readOnly
+                        disabled
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                     />
@@ -48,7 +48,7 @@ const EditUserName = () => {
                     <input 
                         type="text"
                         id="last-name"
-                        readOnly
+                        disabled
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                     />
