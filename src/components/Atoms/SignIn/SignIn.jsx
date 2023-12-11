@@ -19,11 +19,11 @@ const Login = () => {
             <div className="block-logout">
                 <Link to="/profile" className="main-nav-item">
                     <i className="fa fa-user-circle"></i>
-                    Tony {/* Il faudra mettre le firstName à la place de Tony */}
+                    <span>Tony</span> {/* Il faudra mettre le firstName à la place de Tony */}
                 </Link>
                 <button onClick={handleSignOut} className="sign-out">
                     <i className="fa fa-sign-out"></i>
-                    Sign Out
+                    <span>Sign Out</span>
                 </button>
             </div>
         );
@@ -32,7 +32,7 @@ const Login = () => {
             <div>
                 <Link to="/login" className="main-nav-item">
                     <i className="fa fa-user-circle"></i>
-                    Sign In
+                    <span>Sign In</span>
                 </Link>
             </div>
         );
