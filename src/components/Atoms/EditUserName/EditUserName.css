@@ -1,0 +1,49 @@
+.edit-username-block {
+    background: white;
+    max-width: 330px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+.edit-username-block h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.edit-username-block form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-username-block label {
+    margin-right: 10px;
+}
+
+.edit-username-block input[type="text"] {
+    margin-bottom: 10px;
+}
+
+.edit-username-block input[type="text"],
+.edit-username-block .save-button,
+.edit-username-block .cancel-button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-username-block .save-button,
+.edit-username-block .cancel-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.save-cancel-button {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    gap: 7px;
+}
