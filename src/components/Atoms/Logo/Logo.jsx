@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Logo.css";
-import { useDispatch, useSelector } from "react-redux";
 
 const Logo = () => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
