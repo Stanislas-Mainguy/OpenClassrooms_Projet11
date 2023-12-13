@@ -1,0 +1,36 @@
+.error-page-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-height: 85vh;
+    padding: 25px;
+    border-top: 2px solid #ccc;
+}
+
+.error-404-block {
+    background-color: #f8f8f8;
+    max-width: 670px;
+    padding: 15px;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.error-bank-picture {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    margin: 15px auto;
+}
+
+.error-page-404 h1,
+.error-page-404 h2 {
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 10px 0px;
+}
+
+.error-page-404 p {
+    margin: 0px;
+    line-height: 1.5;
+}
