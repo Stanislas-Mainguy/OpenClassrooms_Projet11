@@ -1,13 +1,16 @@
 import React from "react";
-import SectionFeaturesData from "./SectionFeaturesData.json";
+import { useSelector } from "react-redux";
+import { selectFeatures } from "../../../store/slices/authSlice";
 import SectionFeaturesItems from "../../Atoms/FeaturesItems/FeaturesItems";
 import "./SectionFeatures.css";
 
 const SectionFeatures = () => {
+    const features = useSelector(selectFeatures);
+
     return (
         <section className="features">
             <h2 className="sr-only">Features</h2>
-            {SectionFeaturesData.map((feature, index) => (
+            {features.map((feature, index) => (
                 <SectionFeaturesItems
                     key={index}
                     imgSrc={feature.imgSrc}
