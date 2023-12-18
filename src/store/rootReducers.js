@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import actionSlice from "./slices/actionSlice";
+import authReducer from "./slices/authUsers/";
 
 const rootReducer = combineReducers({
     auth: actionSlice, 
