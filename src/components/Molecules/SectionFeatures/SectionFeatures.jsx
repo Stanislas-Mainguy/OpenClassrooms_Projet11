@@ -10,9 +10,9 @@ const SectionFeatures = () => {
     return (
         <section className="features">
             <h2 className="sr-only">Features</h2>
-            {features.map((feature, index) => (
+            {features.map((feature) => (
                 <SectionFeaturesItems
-                    key={index}
+                    key={feature.id}
                     imgSrc={feature.imgSrc}
                     altText={feature.altText}
                     title={feature.title}
