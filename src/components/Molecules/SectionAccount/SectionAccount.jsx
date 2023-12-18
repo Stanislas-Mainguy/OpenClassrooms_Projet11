@@ -1,16 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserProfile, toggleEdit } from "../../../store/slices/authSlice";
-import SectionAccountData from "./SectionAccountData.json";
+import { 
+    fetchUserProfile, 
+    selectAccountData, 
+    selectIsEditing, 
+    selectToken, 
+    selectUser, 
+    toggleEdit } 
+    from "../../../store/slices/authSlice";
 import AccountItems from "../../Atoms/AccountItems/AccountItems";
 import EditUserName from "../../Atoms/EditUserName/EditUserName";
 import "./SectionAccount.css";
 
 const SectionAccount = () => {
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth.user);
-    const token = useSelector((state) => state.auth.token);
-    const isEditing = useSelector((state) => state.auth.isEditing);
+    const user = useSelector(selectUser);
+    const token = useSelector(selectToken);
+    const isEditing = useSelector(selectIsEditing);
+    const accounts = useSelector(selectAccountData);
 
     useEffect(() => {
         if (token) {
@@ -22,7 +29,6 @@ const SectionAccount = () => {
         dispatch(toggleEdit());
     };
 
-    console.log("User data", user);
     const { firstName, userName } = user || {};
 
     return (
@@ -37,12 +43,10 @@ const SectionAccount = () => {
             )}
 
             <h2 className="sr-only">Accounts</h2>
-            {SectionAccountData.map((account, index) => (
+            {accounts && accounts.map(account => (
                 <AccountItems 
-                    key={index}
-                    title={`Argent Bank ${account.accountType} (${account.id})`}
-                    amount={account.balance}
-                    description={account.description}
+                    key={account.id}
+                    accountId={account.id}
                 />
             ))}
         </>

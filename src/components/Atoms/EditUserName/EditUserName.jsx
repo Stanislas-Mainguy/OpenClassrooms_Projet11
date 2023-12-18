@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleEdit } from "../../../store/slices/authSlice";
+import { fetchUserNameEditProfile, toggleEdit } from "../../../store/slices/authSlice";
 import "./EditUserName.css";
 
 const EditUserName = () => {
@@ -9,18 +9,25 @@ const EditUserName = () => {
     const [userName, setUserName] = useState(user?.userName || '');
     const [firstName, setFirstName] = useState(user?.firstName || '');
     const [lastName, setLastName] = useState(user?.lastName || '');
+    const [animate, setAnimate] = useState(false);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Il faudra mettre la logique de mise à jour d'information plus tard ici //
-    };
-    
+    useEffect(() => {
+        setAnimate(true);
+    }, []);
+
     const handleCancelClick = () => {
         dispatch(toggleEdit());
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const updatedData = { userName: userName};
+        dispatch(fetchUserNameEditProfile(updatedData));
+        dispatch(toggleEdit());
+    };
+    
     return (
-        <div className="edit-username-block">
+        <div className={`edit-username-block ${animate ? 'animate-edit-username-block' : ''}`}>
             <h1>Edit user info</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -38,6 +45,7 @@ const EditUserName = () => {
                     <input 
                         type="text"
                         id="first-name"
+                        autoComplete="given-name"
                         disabled
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -48,6 +56,7 @@ const EditUserName = () => {
                     <input 
                         type="text"
                         id="last-name"
+                        autoComplete="family-name"
                         disabled
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}

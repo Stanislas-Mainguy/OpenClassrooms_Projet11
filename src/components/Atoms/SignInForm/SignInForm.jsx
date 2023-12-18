@@ -48,7 +48,7 @@ const SignInForm = () => {
                 <input 
                     type="email" 
                     id="email" 
-                    autoComplete="username"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)} 
                 />

@@ -5,7 +5,7 @@ import { signOut } from "../../../store/slices/authSlice";
 import "./SignIn.css";
 
 const Login = () => {
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const { isAuthenticated, user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -14,12 +14,14 @@ const Login = () => {
         navigate("/");
     };
 
+    const firstName = user?.firstName;
+
     if (isAuthenticated) {
         return (
             <div className="block-logout">
                 <Link to="/profile" className="main-nav-item">
                     <i className="fa fa-user-circle"></i>
-                    <span>Tony</span> {/* Il faudra mettre le firstName à la place de Tony */}
+                    <span>{firstName}</span>
                 </Link>
                 <button onClick={handleSignOut} className="sign-out">
                     <i className="fa fa-sign-out"></i>
