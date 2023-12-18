@@ -1,3 +1,3 @@
-export const signOutAction = () => ({
+export const signOut = () => ({
     type: SIGN_OUT,
 });

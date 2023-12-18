@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUserProfile, fetchUserNameEditProfile, signOut } from './actions';
-import { authData } from './data/authData';
+import { fetchUserNameEditProfile } from './actions/fetchUserNameEditProfile';
+import { fetchUserProfile } from './actions/fetchUserProfile';
+import { authData } from './authData/authData';
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -40,5 +41,10 @@ export const authSlice = createSlice({
   }
 });
 
-export const { signOut, toggleEdit } = authSlice.actions;
+export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;
+export const selectToken = (state) => state.auth.token;
+export const selectUser = (state) => state.auth.user;
+export const selectIsEditing = (state) => state.auth.isEditing;
+export const selectAccounts = (state) => state.auth.accounts;
+export const { toggleEdit } = authSlice.actions;
 export default authSlice.reducer;

@@ -8,4 +8,5 @@ export const featuresSlice = createSlice({
   },
 });
 
+export const selectFeatures = state => state.features.features;
 export default featuresSlice.reducer;
