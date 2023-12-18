@@ -1,10 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-import SectionFeaturesData from "./SectionFeaturesData.json";
+import { createSlice } from '@reduxjs/toolkit';
+import SectionFeaturesData from './SectionFeaturesData.json';
 
 export const featuresSlice = createSlice({
-    name: 'features',
-    initialState: SectionFeaturesData,
+  name: 'features',
+  initialState: {
+    features: SectionFeaturesData,
+  },
 });
 
-export const selectFeatures = state => state.features;
 export default featuresSlice.reducer;

@@ -1,7 +1,7 @@
-import usersReducer from './usersSlice';
+import randomUsersReducer from './usersSlice';
 import { loginUser } from './actions/loginUser';
 
 export {
-  usersReducer,
+  randomUsersReducer,
   loginUser
 };

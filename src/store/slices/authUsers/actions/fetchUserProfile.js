@@ -13,6 +13,7 @@ export const fetchUserProfile = createAsyncThunk(
       });
       return response.data.body;
     } catch (error) {
+      console.error("Error Response: ", error.response);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

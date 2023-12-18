@@ -1,4 +1,5 @@
-import featuresReducer, { selectFeatures } from "./featuresSlice";
+import featuresReducer from './featuresSlice';
 
-export { selectFeatures };
-export default featuresReducer;
+export {
+  featuresReducer,
+};

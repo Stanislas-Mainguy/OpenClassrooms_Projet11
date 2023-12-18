@@ -6,16 +6,13 @@ export const usersSlice = createSlice({
   initialState: {
     isAut
   }
-  reducers: {
-    // Ajoutez ici les reducers spécifiques aux utilisateurs non authentifiés
+  reducers: 
   },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.fulfilled, (state, action) => {
-        // Traitez l'action loginUser fulfilled ici
       })
-      .addCase(loginUser.rejected, (state, action) => {
-        // Traitez l'action loginUser rejected ici
+      .addCase(loginUser.rejected, (state, action) => { 
       });
   }
 });
