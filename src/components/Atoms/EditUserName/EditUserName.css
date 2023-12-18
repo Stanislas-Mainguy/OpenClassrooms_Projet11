@@ -3,6 +3,13 @@
     max-width: 330px;
     margin: 20px auto;
     padding: 15px;
+    transform-origin: center;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.animate-edit-username-block {
+    transform: scale(1);
 }
 
 .edit-username-block h1 {
