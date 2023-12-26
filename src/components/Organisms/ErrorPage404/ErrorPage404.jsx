@@ -13,7 +13,7 @@ const ErrorPage404 = () => {
                 </p>
                 <img
                     className="error-bank-picture" 
-                    src={process.env.PUBLIC_URL + "/img/Error 404 picture.png"}
+                    src={process.env.PUBLIC_URL + "/img/Error-404-picture.webp"}
                     alt="Picture for error 404"
                 />
                 <p>
