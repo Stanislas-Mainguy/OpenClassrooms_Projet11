@@ -101,6 +101,118 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+
+  ------------------ // New route for fetching // ------------------
+  /user/account/{id}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+       - User Account Module
+      summary: User Account API
+      description: API for fetching a user account
+      parameters:
+        - in: path
+          name: id
+          description: Account Payload
+          required: true
+          type: string
+          schema:
+            $ref: '#/definitions/Account'
+      responses:
+        '200':
+          description: User account retrivied successfully
+          schema:
+            $ref: '#/definitions/AccountResponse'
+        '400':
+          description: Invalid Fields
+        '403':
+          description: None Authorized
+        '500':
+          description: Internal Server Error
+  /user/account/{id}/transactions/{month}-{year}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions Module
+      summary: User Transaction API
+      description: API for fetching a user transactions for one month
+      parameters:
+        - in: path
+          name: id
+          description: Transactions Payload
+          required: true
+          type: string
+          schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: User transactions retrivied successfully
+          schema:
+            $ref: '#/definitions/TransactionsResponse'
+        '400':
+          description: Invalid Fields
+        '403':
+          description: None Authorized
+        '500':
+          description: Internal Server Error
+  /user/account/{accountId}/transaction/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Category Module
+      summary: User Category API
+      description: API for fetching a new catergoy
+      parameters:
+        - in: path
+          name: accountId
+          description: Catergoy Payload
+          required: true
+          type: string
+          schema:
+            $ref: '#/definitions/Category'
+      responses:
+        '200':
+          description: Account category's changed successfully
+          schema:
+            $ref: '#/definitions/CategoryResponse'
+        '400':
+          description: Invalid Fields
+        '403':
+          description: None Authorized
+        '500':
+          description: Internal Server Error
+  /user/account/{id}/transaction/{id}/Note:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Note Module
+      summary: User Note API
+      description: API for fetching a new note
+      parameters:
+        - in: body
+          name: body
+          description: Note Payload
+          required: true
+          type: string
+          schema:
+            $ref: '#/definitions/Note'
+      responses:
+        '200':
+          description: Account note's changed successfully
+          schema:
+            $ref: '#/definitions/NoteResponse'
+        '400':
+          description: Invalid Fields
+        '403':
+          description: None Authorized
+        '500':
+          description: Internal Server Error
+  ------------------ // New route for fetching // ------------------
+
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -156,3 +268,64 @@ definitions:
     properties:
       userName:
         type: string
+        
+  ------------------ // New definitions // ------------------
+  Account:
+    type: object
+    properties:
+      accountId:
+        type: string
+      balance:
+        type: number
+      type:
+        type: string
+      createAt:
+        type: string
+        format: date-time
+  AccountResponse:
+    type: object
+    properties:
+      type: integer
+      message:
+        type: string
+      data:
+        $ref: 'definitions/Account'
+  Transactions:
+    type: object
+    properties:
+      transactionId:
+        type: string
+      amount:
+        type: number
+      description:
+        type: string
+      date:
+        type: string
+        format: date-time
+  TransactionsResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Transactions'
+  Category:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+  CategoryResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      data:
+        $ref: '#/definitions/Category'
