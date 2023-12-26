@@ -29,7 +29,7 @@ const SectionAccount = () => {
         dispatch(toggleEdit());
     };
 
-    const { firstName, userName } = user || {};
+    const { firstName, lastName } = user || {};
 
     return (
         <>
@@ -37,7 +37,7 @@ const SectionAccount = () => {
                 <EditUserName />
             ) : (
                 <div className="header">
-                    <h1>Welcome back<br />{firstName} {userName}!</h1>
+                    <h1>Welcome back<br />{firstName} {lastName}!</h1>
                     <button className="edit-button" onClick={handleEditClick}>Edit Name</button>
                 </div>
             )}

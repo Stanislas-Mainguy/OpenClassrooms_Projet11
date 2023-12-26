@@ -14,14 +14,14 @@ const Login = () => {
         navigate("/");
     };
 
-    const firstName = user?.firstName;
+    const userName = user?.userName;
 
     if (isAuthenticated) {
         return (
             <div className="block-logout">
                 <Link to="/profile" className="main-nav-item">
                     <i className="fa fa-user-circle"></i>
-                    <span>{firstName}</span>
+                    <span>{userName}</span>
                 </Link>
                 <button onClick={handleSignOut} className="sign-out">
                     <i className="fa fa-sign-out"></i>
