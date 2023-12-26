@@ -1,11 +1,12 @@
 .edit-username-block {
     background: white;
-    max-width: 330px;
+    max-width: 310px;
     margin: 20px auto;
-    padding: 15px;
+    padding: 5px;
     transform-origin: center;
     transform: scale(0);
     transition: transform 0.5s ease;
+    box-sizing: border-box;
 }
 
 .animate-edit-username-block {
