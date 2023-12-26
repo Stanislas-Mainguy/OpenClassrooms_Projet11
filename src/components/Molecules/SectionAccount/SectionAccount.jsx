@@ -6,7 +6,8 @@ import {
     selectIsEditing, 
     selectToken, 
     selectUser, 
-    toggleEdit } 
+    toggleEdit 
+    } 
     from "../../../store/slices/authSlice";
 import AccountItems from "../../Atoms/AccountItems/AccountItems";
 import EditUserName from "../../Atoms/EditUserName/EditUserName";
