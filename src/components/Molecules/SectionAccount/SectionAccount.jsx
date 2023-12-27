@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { 
     fetchUserProfile, 
-    selectAccountData, 
+    selectAccounts, 
     selectIsEditing, 
     selectToken, 
     selectUser, 
     toggleEdit 
     } 
-    from "../../../store/slices/authSlice";
+    from "../../../store/slices/auth/authSlice";
 import AccountItems from "../../Atoms/AccountItems/AccountItems";
 import EditUserName from "../../Atoms/EditUserName/EditUserName";
 import "./SectionAccount.css";
@@ -18,7 +18,7 @@ const SectionAccount = () => {
     const user = useSelector(selectUser);
     const token = useSelector(selectToken);
     const isEditing = useSelector(selectIsEditing);
-    const accounts = useSelector(selectAccountData);
+    const accounts = useSelector(selectAccounts);
 
     useEffect(() => {
         if (token) {
