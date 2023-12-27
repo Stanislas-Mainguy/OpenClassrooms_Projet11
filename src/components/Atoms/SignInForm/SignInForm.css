@@ -41,6 +41,7 @@
 .error-message {
     background-color: red;
     color: white;
-    width: 107%;
+    width: 103%;
+    padding: 5px;
     margin-top: 10px;
 }
