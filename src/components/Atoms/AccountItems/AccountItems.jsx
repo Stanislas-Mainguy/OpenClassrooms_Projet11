@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectAccountData } from '../../../store/slices/authSlice';
+import { selectAccounts } from '../../../store/slices/auth/authSlice';
 import './AccountItems.css';
 
 const AccountItems = ({ accountId }) => {
-    const accounts = useSelector(selectAccountData);
+    const accounts = useSelector(selectAccounts);
     const account = accounts.find(acc => acc.id === accountId);
 
     if(!account) return null;

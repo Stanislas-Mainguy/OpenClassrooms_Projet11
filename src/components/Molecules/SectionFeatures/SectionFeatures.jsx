@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectFeatures } from "../../../store/slices/authSlice";
+import { selectFeatures } from "../../../store/slices/features/featuresSlice";
 import SectionFeaturesItems from "../../Atoms/FeaturesItems/FeaturesItems";
 import "./SectionFeatures.css";
 

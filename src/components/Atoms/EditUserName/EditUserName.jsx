@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserNameEditProfile, toggleEdit } from "../../../store/slices/authSlice";
+import { fetchUserNameEditProfile, toggleEdit } from "../../../store/slices/auth/authSlice";
 import "./EditUserName.css";
 
 const EditUserName = () => {
