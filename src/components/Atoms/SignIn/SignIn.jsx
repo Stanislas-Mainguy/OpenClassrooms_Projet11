@@ -10,6 +10,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleSignOut = () => {
+        localStorage.removeItem('token');
         dispatch(signOut());
         navigate("/");
     };
