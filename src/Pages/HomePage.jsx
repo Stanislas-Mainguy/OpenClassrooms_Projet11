@@ -19,7 +19,7 @@ const HomePage = () => {
                 <Route path="/profile" element={
                     isAuthenticated ? <Main isAuthenticated={true} /> 
                     : 
-                    <Navigate replace to="/login" /> } /> 
+                    <Navigate replace to="/login" />} /> 
                 <Route path="*" element={<ErrorPage404 />} />
             </Routes>
             <Footer />
