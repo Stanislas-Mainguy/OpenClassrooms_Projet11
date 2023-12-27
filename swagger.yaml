@@ -211,6 +211,73 @@ paths:
           description: None Authorized
         '500':
           description: Internal Server Error
+  /user/account/{accountId}/transaction/{transactionId}/note:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Note Module
+      summary: Add a Note to a Transaction
+      description: API for adding a new note to a specific transaction
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+          description: The ID of the account
+        - in: path
+          name: transactionId
+          required: true
+          type: string
+          description: The ID of the transaction
+        - in: body
+          name: body
+          description: Note payload
+          required: true
+          schema:
+            $ref: '#/definitions/Note'
+      responses:
+        '201':
+          description: Note added successfully
+          schema:
+            $ref: '#/definitions/NoteResponse'
+        '400':
+          description: Invalid fields
+        '403':
+          description: Not Authorized
+        '500':
+          description: Internal Server Error
+  /user/account/{accountId}/transaction/{transactionId}/note:
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - User Note Module
+      summary: Delete a Note from a Transaction
+      description: API for deleting a note from a specific transaction
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+          description: The ID of the account
+        - in: path
+          name: transactionId
+          required: true
+          type: string
+          description: The ID of the transaction
+      responses:
+        '200':
+          description: Note deleted successfully
+        '400':
+          description: Invalid request
+        '403':
+          description: Not Authorized
+        '404':
+          description: Note not found
+        '500':
+          description: Internal Server Error
+
   ------------------ // New route for fetching // ------------------
 
 securityDefinitions:
@@ -270,7 +337,7 @@ definitions:
         type: string
         
   ------------------ // New definitions // ------------------
-  Account:
+Account:
     type: object
     properties:
       accountId:
@@ -329,3 +396,25 @@ definitions:
         type: string
       data:
         $ref: '#/definitions/Category'
+  Note:
+    type: object
+    properties:
+      noteId:
+        type: string
+      content:
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+  NoteResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      data:
+        $ref: '#/definitions/Note'
