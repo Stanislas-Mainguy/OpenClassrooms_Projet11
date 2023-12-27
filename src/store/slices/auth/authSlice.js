@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loginUser } from './actions/signIn';
 import { fetchUserNameEditProfile } from './actions/fetchUserNameEditProfile';
 import { fetchUserProfile } from './actions/fetchUserProfile';
 import { authData } from './authData/authData';
@@ -25,6 +26,14 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.isAuthenticated = true;
+        state.token = action.payload.body.token;
+        localStorage.setItem('token', action.payload.body.token);
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.error = action.payload;
+      })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.user = action.payload;
         localStorage.setItem('userInfos', action.payload.body);
@@ -46,5 +55,6 @@ export const selectToken = (state) => state.auth.token;
 export const selectUser = (state) => state.auth.user;
 export const selectIsEditing = (state) => state.auth.isEditing;
 export const selectAccounts = (state) => state.auth.accounts;
-export const { toggleEdit } = authSlice.actions;
+export { fetchUserNameEditProfile, fetchUserProfile, loginUser };
+export const { signOut, toggleEdit } = authSlice.actions;
 export default authSlice.reducer;
