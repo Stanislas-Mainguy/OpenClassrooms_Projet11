@@ -101,8 +101,6 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-
-  ------------------ // New route for fetching // ------------------
   /user/account/{id}:
     get:
       security:
@@ -277,9 +275,6 @@ paths:
           description: Note not found
         '500':
           description: Internal Server Error
-
-  ------------------ // New route for fetching // ------------------
-
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -335,9 +330,7 @@ definitions:
     properties:
       userName:
         type: string
-        
-  ------------------ // New definitions // ------------------
-Account:
+  Account:
     type: object
     properties:
       accountId:
