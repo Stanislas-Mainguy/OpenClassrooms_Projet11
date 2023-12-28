@@ -1,11 +1,12 @@
 .hero-content {
-    position: relative;
+    position: absolute;
     top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     width: 200px;
     background: white;
     padding: 2rem;
     text-align: left;
-    margin: 0 auto;
 }
 
 .hero-content .subtitle {
@@ -24,6 +25,8 @@
         position: absolute;
         top: 50px;
         right: 50px;
+        left: auto;
+        transform: none;
         width: 300px;
         margin: 2rem;
     }
