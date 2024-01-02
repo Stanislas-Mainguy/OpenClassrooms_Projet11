@@ -144,6 +144,20 @@ paths:
           type: string
           schema:
             $ref: '#/definitions/Transactions'
+        - in: path
+          name: month
+          description: Transactions month Payload
+          required: true
+          type: string
+          schema:
+            $ref: '#/definitions/Transactions'
+        - in: path
+          name: year
+          description: Transactions year Payload
+          required: true
+          type: string
+          schema:
+            $ref: '#/definitions/Transactions'
       responses:
         '200':
           description: User transactions retrivied successfully
@@ -155,7 +169,7 @@ paths:
           description: None Authorized
         '500':
           description: Internal Server Error
-  /user/account/{accountId}/transaction/{transactionId}:
+  /transaction/{transactionId}:
     get:
       security:
         - Bearer: []
@@ -182,7 +196,7 @@ paths:
           description: None Authorized
         '500':
           description: Internal Server Error
-  /user/account/{id}/transaction/{id}/Note:
+  /transaction/{id}/Note:
     put:
       security:
         - Bearer: []
@@ -209,7 +223,7 @@ paths:
           description: None Authorized
         '500':
           description: Internal Server Error
-  /user/account/{accountId}/transaction/{transactionId}/note:
+  /transaction/{transactionId}/note:
     post:
       security:
         - Bearer: []
@@ -219,21 +233,10 @@ paths:
       description: API for adding a new note to a specific transaction
       parameters:
         - in: path
-          name: accountId
-          required: true
-          type: string
-          description: The ID of the account
-        - in: path
           name: transactionId
           required: true
           type: string
           description: The ID of the transaction
-        - in: body
-          name: body
-          description: Note payload
-          required: true
-          schema:
-            $ref: '#/definitions/Note'
       responses:
         '201':
           description: Note added successfully
@@ -245,7 +248,7 @@ paths:
           description: Not Authorized
         '500':
           description: Internal Server Error
-  /user/account/{accountId}/transaction/{transactionId}/note:
+  /transaction/{transactionId}/note:
     delete:
       security:
         - Bearer: []
@@ -254,11 +257,6 @@ paths:
       summary: Delete a Note from a Transaction
       description: API for deleting a note from a specific transaction
       parameters:
-        - in: path
-          name: accountId
-          required: true
-          type: string
-          description: The ID of the account
         - in: path
           name: transactionId
           required: true
@@ -275,6 +273,50 @@ paths:
           description: Note not found
         '500':
           description: Internal Server Error
+  /transaction/Category:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Category Module
+      summary: Get a transaction category name
+      description: API for get a category name
+      responses:
+      '200':
+        description: Description Category getted successfully
+      '400':
+        description: Invalid request
+      '403':
+        description: Not Authorized
+      '404':
+        description: Category not found
+      '500':
+        description: Internal Server Error
+  /transaction/{transactionId}/Category:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Category Module
+      summary: Change a category name
+      description: API for change a category name
+      parameters:
+        - in: path
+          name: transactionId
+          required: true
+          type: string
+          description: The ID of the transaction
+      responses:
+      '200':
+        description: Category's name changed successfully
+      '400':
+        description: Invalid request
+      '403':
+        description: Not Authorized
+      '404':
+        description: Category not found
+      '500':
+        description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
