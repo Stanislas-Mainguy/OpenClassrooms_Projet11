@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserNameEditProfile, toggleEdit } from "../../../store/slices/auth/authSlice";
+import { fetchUserNameEditProfile, selectUser, toggleEdit } from "../../../store/slices/auth/authSlice";
 import "./EditUserName.css";
 
 const EditUserName = () => {
-    const user = useSelector((state) => state.auth.user);
+    const user = useSelector(selectUser);
     const dispatch = useDispatch();
     const [userName, setUserName] = useState(user?.userName || '');
     const [firstName, setFirstName] = useState(user?.firstName || '');
