@@ -115,20 +115,18 @@ paths:
           description: Account Payload
           required: true
           type: string
-          schema:
-            $ref: '#/definitions/Account'
       responses:
         '200':
           description: User account retrivied successfully
           schema:
-            $ref: '#/definitions/AccountResponse'
+            $ref: '#/definitions/Account'
         '400':
           description: Invalid Fields
         '403':
           description: None Authorized
         '500':
           description: Internal Server Error
-  /user/account/{id}/transactions/{month}-{year}:
+  /user/account/{accountId}/transactions/{transactionId}:
     get:
       security:
         - Bearer: []
@@ -138,185 +136,62 @@ paths:
       description: API for fetching a user transactions for one month
       parameters:
         - in: path
-          name: id
-          description: Transactions Payload
+          name: accountId
+          description: Account Payload
           required: true
           type: string
-          schema:
-            $ref: '#/definitions/Transactions'
         - in: path
-          name: month
-          description: Transactions month Payload
+          name: transactionId
+          description: Transaction Payload
           required: true
           type: string
-          schema:
-            $ref: '#/definitions/Transactions'
-        - in: path
-          name: year
-          description: Transactions year Payload
-          required: true
-          type: string
-          schema:
-            $ref: '#/definitions/Transactions'
       responses:
         '200':
           description: User transactions retrivied successfully
           schema:
-            $ref: '#/definitions/TransactionsResponse'
+            $ref: '#/definitions/TransactionsDetail'
         '400':
           description: Invalid Fields
         '403':
           description: None Authorized
         '500':
           description: Internal Server Error
-  /transaction/{transactionId}:
-    get:
+    put:
       security:
         - Bearer: []
       tags:
-        - User Category Module
-      summary: User Category API
-      description: API for fetching a new catergoy
+        - User Transactions Module
+      summary: Update Transaction Category and Note
+      description: API for updating the category and note of a specific transaction
       parameters:
         - in: path
           name: accountId
-          description: Catergoy Payload
           required: true
           type: string
-          schema:
-            $ref: '#/definitions/Category'
-      responses:
-        '200':
-          description: Account category's changed successfully
-          schema:
-            $ref: '#/definitions/CategoryResponse'
-        '400':
-          description: Invalid Fields
-        '403':
-          description: None Authorized
-        '500':
-          description: Internal Server Error
-  /transaction/{id}/Note:
-    put:
-      security:
-        - Bearer: []
-      tags:
-        - User Note Module
-      summary: User Note API
-      description: API for fetching a new note
-      parameters:
+          description: The ID of the account
+        - in: path
+          name: transactionId
+          required: true
+          type: string
+          description: The ID of the transaction
         - in: body
           name: body
-          description: Note Payload
           required: true
-          type: string
           schema:
-            $ref: '#/definitions/Note'
+            $ref: '#/definitions/TransactionUpdate'
       responses:
         '200':
-          description: Account note's changed successfully
+          description: Transaction updated successfully
           schema:
-            $ref: '#/definitions/NoteResponse'
+            $ref: '#/definitions/ApiResponse'
         '400':
-          description: Invalid Fields
-        '403':
-          description: None Authorized
-        '500':
-          description: Internal Server Error
-  /transaction/{transactionId}/note:
-    post:
-      security:
-        - Bearer: []
-      tags:
-        - User Note Module
-      summary: Add a Note to a Transaction
-      description: API for adding a new note to a specific transaction
-      parameters:
-        - in: path
-          name: transactionId
-          required: true
-          type: string
-          description: The ID of the transaction
-      responses:
-        '201':
-          description: Note added successfully
-          schema:
-            $ref: '#/definitions/NoteResponse'
-        '400':
-          description: Invalid fields
-        '403':
-          description: Not Authorized
-        '500':
-          description: Internal Server Error
-  /transaction/{transactionId}/note:
-    delete:
-      security:
-        - Bearer: []
-      tags:
-        - User Note Module
-      summary: Delete a Note from a Transaction
-      description: API for deleting a note from a specific transaction
-      parameters:
-        - in: path
-          name: transactionId
-          required: true
-          type: string
-          description: The ID of the transaction
-      responses:
-        '200':
-          description: Note deleted successfully
-        '400':
-          description: Invalid request
+          description: Invalid fields or request
         '403':
           description: Not Authorized
         '404':
-          description: Note not found
+          description: Transaction not found
         '500':
-          description: Internal Server Error
-  /transaction/Category:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transaction Category Module
-      summary: Get a transaction category name
-      description: API for get a category name
-      responses:
-      '200':
-        description: Description Category getted successfully
-      '400':
-        description: Invalid request
-      '403':
-        description: Not Authorized
-      '404':
-        description: Category not found
-      '500':
-        description: Internal Server Error
-  /transaction/{transactionId}/Category:
-    put:
-      security:
-        - Bearer: []
-      tags:
-        - User Category Module
-      summary: Change a category name
-      description: API for change a category name
-      parameters:
-        - in: path
-          name: transactionId
-          required: true
-          type: string
-          description: The ID of the transaction
-      responses:
-      '200':
-        description: Category's name changed successfully
-      '400':
-        description: Invalid request
-      '403':
-        description: Not Authorized
-      '404':
-        description: Category not found
-      '500':
-        description: Internal Server Error
+          description: Internal Server Error   
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -375,81 +250,70 @@ definitions:
   Account:
     type: object
     properties:
-      accountId:
+      id:
         type: string
-      balance:
-        type: number
-      type:
-        type: string
-      createAt:
+        description: Unique identifier for the account
+      created_at:
         type: string
         format: date-time
-  AccountResponse:
+        description: The date and time when the account was created
+      transactions:
+        type: array
+        description: List of transactions for the current month
+        items:
+          $ref: '#/definitions/TransactionsDetail'
+    required:
+      - id
+      - created_at
+      - transactions
+  TransactionUpdate:
     type: object
     properties:
-      type: integer
-      message:
+      category:
         type: string
-      data:
-        $ref: 'definitions/Account'
-  Transactions:
+        description: New category of the transaction
+      note:
+        type: string
+        description: New note for the transaction
+    required:
+      - category
+      - note
+  TransactionsDetail:
     type: object
     properties:
       transactionId:
         type: string
+        description: Unique identifier of the transaction
       amount:
         type: number
+        format: float
+        description: Amount of the transaction
       description:
         type: string
+        description: Description of the transaction
+      transaction type:
+        type: string
+        description: Type of the transaction (debit, credit, etc)
+      balance:
+        type: number
+        format: float
+        description: Balance of the account after the transaction
       date:
         type: string
         format: date-time
-  TransactionsResponse:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
+        description: Date and time of the transaction
+      category:
         type: string
-      data:
-        type: array
-        items:
-          $ref: '#/definitions/Transactions'
-  Category:
-    type: object
-    properties:
-      name:
+        description: Category of the transaction
+      note:
         type: string
-      description:
-        type: string
-  CategoryResponse:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
-        type: string
-      data:
-        $ref: '#/definitions/Category'
-  Note:
-    type: object
-    properties:
-      noteId:
-        type: string
-      content:
-        type: string
-      createdAt:
-        type: string
-        format: date-time
-      updatedAt:
-        type: string
-        format: date-time
-  NoteResponse:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
-        type: string
-      data:
-        $ref: '#/definitions/Note'
+        description: Note attached to the transaction
+    required:
+      - transactionId
+      - amount
+      - description
+      - transaction type
+      - balance
+      - date
+      - category
+      - note
