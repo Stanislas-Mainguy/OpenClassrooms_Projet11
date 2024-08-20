@@ -1,11 +1,10 @@
-##About
-
-In this project, I developed an application in React.js that allows users to log in using their credentials and a token stored in MongoDB, providing secure access to their accounts. I had to master the use of hooks, especially during my first experience with Redux. I also made it a priority to apply clean code practices as much as possible by using atomic design principles, ensuring the code is scalable and highly reusable. Additionally, the application includes SEO optimization.
-
-
 # Argent Bank API
 
 This codebase contains the code needed to run the backend for Argent Bank.
+
+##About
+
+In this project, I developed an application in React.js that allows users to log in using their credentials and a token stored in MongoDB, providing secure access to their accounts. I had to master the use of hooks, especially during my first experience with Redux. I also made it a priority to apply clean code practices as much as possible by using atomic design principles, ensuring the code is scalable and highly reusable. Additionally, the application includes SEO optimization.
 
 ## Getting Started
 
